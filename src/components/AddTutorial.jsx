@@ -1,13 +1,17 @@
 import { useState } from "react";
 
-const AddTutorial = () => {
+const AddTutorial = ({addTutorial}) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+    addTutorial({ title: title, description: desc })
+    setTitle("");
+    setDesc("");
 
   };
-
+console.log(addTutorial)
   return (
     <div className="container text-center mt-4">
       <h1 className="display-4 text-info">Add Your Tutorial</h1>
