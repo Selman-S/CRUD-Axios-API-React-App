@@ -22,7 +22,7 @@ const Home = () => {
 
   }
 
-
+   
   useEffect(() => {
     getData()
   }, []);
@@ -37,13 +37,22 @@ const Home = () => {
     getData()
   }
   
+  const deleteTutorial = async (id)=>{
+    try {
+      await axios.delete(`${url}/${id}`)
+      getData()
+    } catch (error) {
+      
+      console.log(error)
+    }
+  }
   return (
     <>
     {loading ? <Loading /> :
      <>
      <AddTutorial addTutorial={addTutorial} />
-      
-      <TutorialList tutorials={tutorial} />
+     {console.log(tutorial)} 
+      <TutorialList tutorials={tutorial} deleteTutorial={deleteTutorial} />
       
       </> }
       

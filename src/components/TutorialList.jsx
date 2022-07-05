@@ -1,10 +1,10 @@
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 
-const TutorialList = ({tutorials}) => {
- console.log(tutorials)
+const TutorialList = ({tutorials,deleteTutorial}) => {
+ 
 
-
+  console.log(deleteTutorial)
   //? Test data
   // let tutorials = [
   //   {
@@ -18,6 +18,7 @@ const TutorialList = ({tutorials}) => {
   //     description: 'HTML is a markup language',
   //   },
   // ];
+
   return (
     <div className="container mt-4">
       <table className="table table-dark fs-5 table-striped">
@@ -40,8 +41,10 @@ const TutorialList = ({tutorials}) => {
                 <td>{title}</td>
                 <td>{description}</td>
                 <td className="text-center">
-                  <FaEdit size={20} className="me-3 text-info " />
-                  <AiFillDelete size={22} className="text-danger" />
+                  <FaEdit size={20} className="me-3 text-info cursor " />
+                  <AiFillDelete size={22} className="text-danger cursor" onClick={()=>{
+                    deleteTutorial(item.id)
+                  }} />
                 </td>
               </tr>
             );

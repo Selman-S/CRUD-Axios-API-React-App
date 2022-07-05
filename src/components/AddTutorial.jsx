@@ -11,7 +11,7 @@ const AddTutorial = ({addTutorial}) => {
     setDesc("");
 
   };
-console.log(addTutorial)
+
   return (
     <div className="container text-center mt-4">
       <h1 className="display-4 text-info">Add Your Tutorial</h1>
