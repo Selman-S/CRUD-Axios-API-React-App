@@ -40,19 +40,38 @@ const Home = () => {
   const deleteTutorial = async (id)=>{
     try {
       await axios.delete(`${url}/${id}`)
-      getData()
+      
     } catch (error) {
       
       console.log(error)
     }
+    getData()
   }
+
+ //Update
+  const editTutorial = async (id,title,desc)=> {
+
+    const filtered = tutorial.filter((tutor)=> tutor.id=== id).map((tutor)=> ({title:title, description:desc}))
+    console.log(filtered)
+    try {
+      await axios.put(`${url}/${id}`,filtered[0])
+    } catch (error) {
+      console.log(error)
+    }
+    getData()
+  }
+
   return (
     <>
     {loading ? <Loading /> :
      <>
      <AddTutorial addTutorial={addTutorial} />
-     {console.log(tutorial)} 
-      <TutorialList tutorials={tutorial} deleteTutorial={deleteTutorial} />
+   
+      <TutorialList 
+      tutorials={tutorial} 
+      deleteTutorial={deleteTutorial}
+      editTutorial={editTutorial}
+      />
       
       </> }
       

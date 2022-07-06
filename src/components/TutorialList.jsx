@@ -1,10 +1,10 @@
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
+import EditItem from '../components/EditItem'
 
-const TutorialList = ({tutorials,deleteTutorial}) => {
+const TutorialList = ({tutorials,deleteTutorial,editTutorial}) => {
  
 
-  console.log(deleteTutorial)
   //? Test data
   // let tutorials = [
   //   {
@@ -18,6 +18,7 @@ const TutorialList = ({tutorials,deleteTutorial}) => {
   //     description: 'HTML is a markup language',
   //   },
   // ];
+ 
 
   return (
     <div className="container mt-4">
@@ -27,7 +28,7 @@ const TutorialList = ({tutorials,deleteTutorial}) => {
             <th scope="col">#id</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col" className="text-center">
+            <th scope="col" className="text-center text-nowrap">
               Edit
             </th>
           </tr>
@@ -41,9 +42,16 @@ const TutorialList = ({tutorials,deleteTutorial}) => {
                 <td>{title}</td>
                 <td>{description}</td>
                 <td className="text-center">
-                  <FaEdit size={20} className="me-3 text-info cursor " />
+                  <FaEdit 
+                  size={20} 
+                  className="me-3 text-info cursor " 
+                  data-bs-toggle="modal" 
+                  data-bs-target="edit-modal"
+                  onClick={()=> 
+                  editTutorial(id,'css','style')} />
                   <AiFillDelete size={22} className="text-danger cursor" onClick={()=>{
-                    deleteTutorial(item.id)
+                    deleteTutorial(item.id);
+                   
                   }} />
                 </td>
               </tr>
@@ -51,6 +59,7 @@ const TutorialList = ({tutorials,deleteTutorial}) => {
           })}
         </tbody>
       </table>
+      <EditItem/>
     </div>
   );
 };
