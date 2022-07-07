@@ -52,7 +52,7 @@ const Home = () => {
   const editTutorial = async (id,title,desc)=> {
 
     const filtered = tutorial.filter((tutor)=> tutor.id=== id).map((tutor)=> ({title:title, description:desc}))
-    console.log(filtered)
+  
     try {
       await axios.put(`${url}/${id}`,filtered[0])
     } catch (error) {

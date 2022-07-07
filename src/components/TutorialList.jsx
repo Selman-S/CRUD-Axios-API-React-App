@@ -1,24 +1,10 @@
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 import EditItem from '../components/EditItem'
+import { useState } from 'react';
 
 const TutorialList = ({tutorials,deleteTutorial,editTutorial}) => {
- 
-
-  //? Test data
-  // let tutorials = [
-  //   {
-  //     id: 1,
-  //     title: 'ReactJS',
-  //     description: 'React is a JS-library for UI Design',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'HTML',
-  //     description: 'HTML is a markup language',
-  //   },
-  // ];
- 
+ const [item, setItem] = useState("");
 
   return (
     <div className="container mt-4">
@@ -46,9 +32,10 @@ const TutorialList = ({tutorials,deleteTutorial,editTutorial}) => {
                   size={20} 
                   className="me-3 text-info cursor " 
                   data-bs-toggle="modal" 
-                  data-bs-target="edit-modal"
+                  data-bs-target="#edit-modal"
                   onClick={()=> 
-                  editTutorial(id,'css','style')} />
+                    setItem(item)
+                 } />
                   <AiFillDelete size={22} className="text-danger cursor" onClick={()=>{
                     deleteTutorial(item.id);
                    
@@ -59,7 +46,7 @@ const TutorialList = ({tutorials,deleteTutorial,editTutorial}) => {
           })}
         </tbody>
       </table>
-      <EditItem/>
+      <EditItem editTutorial={editTutorial} item={item} />
     </div>
   );
 };
