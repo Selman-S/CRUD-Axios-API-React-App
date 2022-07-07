@@ -1,5 +1,5 @@
 # link
-[Click Me!]([https://app.netlify.com/sites/selman-react-axios-addtutorial/settings/deploys](https://selman-react-axios-addtutorial.netlify.app/))
+[Click Me!](https://selman-react-axios-addtutorial.netlify.app/)
 
 
 
